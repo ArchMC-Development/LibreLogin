@@ -39,7 +39,7 @@ public class ConfigurationKeys {
     public static final ConfigurationKey<List<String>> LIMBO = new ConfigurationKey<>(
             "limbo",
             List.of("limbo0", "limbo1"),
-            "The authentication servers/worlds, players should be sent to, when not authenticated. On Paper, players will be spawned on the world spawn. THIS SERVERS MUST BE REGISTERED IN THE PROXY CONFIG. IN CASE OF PAPER, THE WORLDS MUST EXIST.",
+            "The authentication servers players should be sent to when not authenticated. THIS SERVERS MUST BE REGISTERED IN THE PROXY CONFIG.",
             ConfigurateHelper::getStringList
     );
 
@@ -48,11 +48,8 @@ public class ConfigurationKeys {
             "lobby",
             LOBBY_DEFAULT,
             """
-                    !!WHEN USING PAPER, PUT ALL WORLDS UNDER "root"!!
-                    On Paper, players will be spawned on the world spawn.
-                                        
-                    The servers/worlds player should be sent to when they are authenticated. THE SERVERS MUST BE REGISTERED IN THE PROXY CONFIG. IN CASE OF PAPER, THE WORLDS MUST EXIST.
-                    The configuration allows configuring forced hosts; the servers/worlds in "root" are used when players do not connect from a forced host. Use § instead of dots.
+                    The servers players should be sent to when they are authenticated. THE SERVERS MUST BE REGISTERED IN THE PROXY CONFIG.
+                    The configuration allows configuring forced hosts; the servers in "root" are used when players do not connect from a forced host. Use § instead of dots.
                     See: https://github.com/kyngs/LibrePremium/wiki/Configuring-Servers
                     """,
             ConfigurateHelper::getServerMap
@@ -304,7 +301,7 @@ public class ConfigurationKeys {
     public static final ConfigurationKey<Boolean> PING_SERVERS = new ConfigurationKey<>(
             "ping-servers",
             false,
-            "!!THIS OPTION IS IRRELEVANT WHEN USING PAPER!! Should we ping servers to check if they are online, and get their player count? If you disable this, the pinging servers message will still appear in the console, even though the servers will not be pinged.",
+            "Should we ping servers to check if they are online, and get their player count? If you disable this, the pinging servers message will still appear in the console, even though the servers will not be pinged.",
             ConfigurateHelper::getBoolean
     );
 
@@ -325,7 +322,7 @@ public class ConfigurationKeys {
     public static final ConfigurationKey<Boolean> FALLBACK = new ConfigurationKey<>(
             "fallback",
             false,
-            "!!THIS OPTION IS IRRELEVANT WHEN USING PAPER!! Should we fallback players to lobby servers if the server they are on shutdowns? If set to false, they will be kicked.",
+            "Should we fallback players to lobby servers if the server they are on shutdowns? If set to false, they will be kicked.",
             ConfigurateHelper::getBoolean
     );
 
@@ -385,19 +382,10 @@ public class ConfigurationKeys {
                     This section is used for configuring the email password recovery feature.
                     """
     );
-    public static final ConfigurationKey<Boolean> ALLOW_PROXY_CONNECTIONS = new ConfigurationKey<>(
-            "allow-proxy-connections",
-            true,
-            """
-                    !!!THIS ONLY AFFECTS PAPER!!!
-                    Verifies whether the IP the players had used when authenticating to Mojang matches the IP they are connecting from. Disabling this may break LibreLogin if the server is running under a reverse proxy/VPN.
-                    """,
-            ConfigurateHelper::getBoolean
-    );
     public static final ConfigurationKey<String> LIMBO_PORT_RANGE = new ConfigurationKey<>(
             "limbo-port-range",
             "30000-40000",
-            "!!THIS OPTION IS IRRELEVANT WHEN USING PAPER!! Defines port(s) that limbo server can be bounded to.",
+            "Defines port(s) that limbo server can be bounded to.",
             ConfigurateHelper::getString
     );
 }
